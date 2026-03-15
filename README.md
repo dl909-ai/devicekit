@@ -1,33 +1,27 @@
-# 📱 Device Optimization Project
+# 📱 DeviceKit (2026 Hardware Fork)
 
-We use [DeviceKit](https://github.com/devicekit/DeviceKit) to detect and optimize for 2026 hardware (iPhone 17e, M5 iPads).
+A lightweight library to identify and optimize for Apple hardware, now updated for the 2026 product cycle.
 
-## 🚀 Supported Hardware
-- **iPhone 17e:** Custom display scaling.
-- **M5 iPad Pro (11" & 13"):** High-performance rendering mode.
+## 🚀 2026 Hardware Support
+This fork adds explicit support for the latest devices, allowing for custom UI scaling and performance modes.
+- **iPhone 17e**
+- **iPad Pro 11" (M5)**
+- **iPad Pro 13" (M5)**
 
 ## 🛠 Implementation
-The logic is placed in `AppDelegate.swift`:
+To use these optimizations, call the detection logic in your `AppDelegate.swift`:
 
 ```swift
 import DeviceKit
 
-let device = Device.current
+func application(_ application: UIApplication, didFinishLaunchingWithOptions ...) -> Bool {
+    let device = Device.current
 
-if device == .iPhone17e {
-    print("Applying iPhone 17e display profile...")
-} else if device.isOneOf([.iPadPro11M5, .iPadPro13M5]) {
-    print("Activating M5 High-Performance mode.")
-}
-
-
-```swift
-import DeviceKit
-
-let device = Device.current
-
-if device == .iPhone17e {
-    print("Applying iPhone 17e display profile...")
-} else if device.isOneOf([.iPadPro11M5, .iPadPro13M5]) {
-    print("Activating M5 High-Performance mode.")
+    if device == .iPhone17e {
+        // Apply iPhone 17e specific layout
+    } else if device.isOneOf([.iPadPro11M5, .iPadPro13M5]) {
+        // Enable M5 High-Performance rendering
+    }
+    
+    return true
 }
